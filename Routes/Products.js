@@ -7,7 +7,6 @@ router.get('/',async(req,res)=>{
     res.send(response);
 })
 
-
 router.post('/',async (req,res)=>{
     const {username,origin,title,description,minimum,location,sellerMail,endDate,seller,finalBid,period,material,damage,additional,proof,img_url,status} = req.body;
     // res.send({
@@ -40,6 +39,57 @@ router.get('/:id',async(req,res)=>{
     }
     catch(err){
         console.log("not found");
+    }
+})
+
+router.put('/Accept/:id',async(req,res)=>{
+    try{
+        const updatedDocument = await Products.findOneAndUpdate(
+            { _id: req.params.id }, // Filter condition
+            { $set:{status:1} }, // Update data
+            { new: true } // Return the updated document
+          );
+        if(!updatedDocument){
+            return res.status(401).send("Invalid product id")
+        }
+        return res.status(202).send(updatedDocument);
+    }
+    catch(err){
+        console.log(err);
+    }
+})
+
+router.put('/Decline/:id',async(req,res)=>{
+    try{
+        const updatedDocument = await Products.findOneAndUpdate(
+            { _id: req.params.id }, // Filter condition
+            { $set:{status:0} }, // Update data
+            { new: true } // Return the updated document
+          );
+        if(!updatedDocument){
+            return res.status(401).send("Invalid product id")
+        }
+        return res.status(202).send(updatedDocument);
+    }
+    catch(err){
+        console.log(err);
+    }
+})
+
+router.patch('/BidUpdate/:id',async(req,res)=>{
+    try{
+        const updatedDocument = await Products.findOneAndUpdate(
+            { _id: req.params.id }, // Filter condition
+            { $set:req.body }, // Update data
+            { new: true } // Return the updated document
+          );
+        if(!updatedDocument){
+            return res.status(401).send("Invalid product id")
+        }
+        return res.status(202).send(updatedDocument);
+    }
+    catch(err){
+        console.log(err);
     }
 })
 
