@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const Users = require('./Schema/AuthSchema')
 const multer = require('multer')
 const Products = require("./Routes/Products");
+const Admin = require('./Routes/Admin')
 const upload = require("./utils/multer");
 const cloudinary = require("./utils/cloudinary")
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
@@ -19,7 +20,7 @@ mongoose.connect(process.env.MONGO_URI)
     console.log("connected to db");
 })
 .catch((err)=>{
-    console.log("unable to connect");
+    console.log(err);
 })
 
 
@@ -32,6 +33,7 @@ app.use(express.urlencoded({extended:true}))
 //Routes
 app.use('/Auth',Auth);
 app.use('/Products',Products);
+app.use('/Admin',Admin);
 
 
 app.post('/uploads',upload.single("image"),async (req,res)=>{

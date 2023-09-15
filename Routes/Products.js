@@ -7,6 +7,8 @@ router.get('/',async(req,res)=>{
     res.send(response);
 })
 
+//http://localhost:3000/
+
 router.post('/',async (req,res)=>{
     const {username,origin,title,description,minimum,location,sellerMail,endDate,seller,finalBid,period,material,damage,additional,proof,img_url,status} = req.body;
     // res.send({
@@ -14,7 +16,7 @@ router.post('/',async (req,res)=>{
     //     title:title
     // })
     try{
-        const response = await Products.create({...req.body,status:-1});
+        const response = await Products.create({...req.body,Schedule:"",status:-1});
         console.log(response);
         res.status(201).send({
             success:true,

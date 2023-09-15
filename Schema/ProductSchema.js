@@ -61,6 +61,9 @@ const Products = new Schema(
       },
       "status":{
         "type":"number"
+      },
+      "Schedule":{
+        "type":"string"
       }
       },{timestamps:true}
 )
