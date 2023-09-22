@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const Users = require('./Schema/AuthSchema')
 const multer = require('multer')
 const Products = require("./Routes/Products");
+const ProductData = require('./Schema/ProductSchema');
+const AdminData = require('./Schema/AdminSchema')
 const Admin = require('./Routes/Admin')
 const upload = require("./utils/multer");
 const cloudinary = require("./utils/cloudinary")
@@ -49,8 +51,16 @@ app.post('/uploads',upload.single("image"),async (req,res)=>{
 
 
 //Home route
-app.get('/',(req,res)=>{
+app.get('/',async (req,res)=>{
     res.send("hi");
+    // try{
+    //     const response = await AdminData.updateMany({}, {$set: {email:""}})
+    //     console.log(response);
+    // }
+    // catch(err){
+    //     console.log(err);
+    // }
+
 })
 
 app.listen(5000,()=>{

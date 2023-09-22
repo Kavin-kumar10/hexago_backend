@@ -15,6 +15,7 @@ router.post('/',async (req,res)=>{
     //     UserName:username,
     //     title:title
     // })
+    console.log(req.body);
     try{
         const response = await Products.create({...req.body,Schedule:"",status:-1});
         console.log(response);

@@ -9,7 +9,7 @@ const Admin = new Schema({
     "password": {
         "type": "string"
     },
-    "emailId": {
+    "email": {
         "type": "string"
     },
     "city":{

@@ -64,6 +64,9 @@ const Products = new Schema(
       },
       "Schedule":{
         "type":"string"
+      },
+      "ScheduledAdmin":{
+        "type":"string"
       }
       },{timestamps:true}
 )

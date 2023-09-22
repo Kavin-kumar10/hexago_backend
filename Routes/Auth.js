@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Auth = require('../Schema/AuthSchema');
 
+
+router.get('/', async(req,res)=>{
+    const Response = await Auth.find();
+    res.send(Response);
+})
+
 router.post('/SignUp',async (req,res)=>{
     const {Username,email} = req.body;
     const Users = await Auth.findOne({Username,email});
