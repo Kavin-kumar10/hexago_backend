@@ -62,7 +62,7 @@ const Products = new Schema(
       "status":{
         "type":"number"
       },
-      "Schedule":{
+      "Scheduled":{
         "type":"string"
       },
       "ScheduledAdmin":{
