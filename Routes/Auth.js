@@ -5,6 +5,7 @@ const Auth = require('../Schema/AuthSchema');
 
 router.get('/', async(req,res)=>{
     const Response = await Auth.find();
+    console.log(Response);
     res.send(Response);
 })
 
